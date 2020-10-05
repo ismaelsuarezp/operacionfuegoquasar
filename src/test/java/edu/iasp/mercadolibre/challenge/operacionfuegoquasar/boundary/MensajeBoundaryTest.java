@@ -28,7 +28,7 @@ import static org.mockito.Mockito.when;
 class MensajeBoundaryTest {
 
     @Mock
-    private static IDesfaseBoundary desfaseBoundary;
+    private static DesfaseBoundary desfaseBoundary;
     @InjectMocks
     private static MensajeBoundary mensajeBoundary;
 

@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class MensajeBoundary {
+public class MensajeBoundary implements IMensajeBoundary {
     
     @Value("${operacionfuegoquasar.mensaje.palabra.vacia}")
     private String palabraVacia;
@@ -19,6 +19,7 @@ public class MensajeBoundary {
     @Autowired
     private IDesfaseBoundary desfaseBoundary;
 
+    @Override
     public String desifrar(String[]... mensajes) throws MensajeException {
         try {
             List<String[]> mensajesSinDesfase = desfaseBoundary.quitarDesfase(mensajes);

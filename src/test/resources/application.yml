@@ -2,3 +2,6 @@ operacionfuegoquasar:
   mensaje:
     palabra:
       vacia: " "
+  posicion:
+    distancias:
+      cantidadMinimaParaCalcular: 3
