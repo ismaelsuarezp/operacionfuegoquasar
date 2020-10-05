@@ -1,11 +1,11 @@
-package edu.iasp.mercadolibre.challenge.operacionfuegoquasar.rest;
+package edu.iasp.mercadolibre.challenge.operacionfuegoquasar.boundary.rest;
 
-import edu.iasp.mercadolibre.challenge.operacionfuegoquasar.boundary.IMensajeBoundary;
-import edu.iasp.mercadolibre.challenge.operacionfuegoquasar.boundary.IPosicionBoundary;
-import edu.iasp.mercadolibre.challenge.operacionfuegoquasar.dto.DistanciaSateliteDto;
-import edu.iasp.mercadolibre.challenge.operacionfuegoquasar.dto.InfoSenalSateliteDto;
-import edu.iasp.mercadolibre.challenge.operacionfuegoquasar.dto.RequestInfoTopSecret;
-import edu.iasp.mercadolibre.challenge.operacionfuegoquasar.dto.ResponseTopSecretDto;
+import edu.iasp.mercadolibre.challenge.operacionfuegoquasar.control.mensaje.IMensajeControl;
+import edu.iasp.mercadolibre.challenge.operacionfuegoquasar.control.posicion.IPosicionCountrol;
+import edu.iasp.mercadolibre.challenge.operacionfuegoquasar.control.dto.DistanciaSateliteDto;
+import edu.iasp.mercadolibre.challenge.operacionfuegoquasar.control.dto.InfoSenalSateliteDto;
+import edu.iasp.mercadolibre.challenge.operacionfuegoquasar.control.dto.RequestInfoTopSecretDto;
+import edu.iasp.mercadolibre.challenge.operacionfuegoquasar.control.dto.ResponseTopSecretDto;
 import edu.iasp.mercadolibre.challenge.operacionfuegoquasar.exception.MensajeException;
 import edu.iasp.mercadolibre.challenge.operacionfuegoquasar.exception.PosicionException;
 import edu.iasp.mercadolibre.challenge.operacionfuegoquasar.utils.Coordenada;
@@ -25,15 +25,15 @@ import java.util.stream.Collectors;
 @Log4j2
 @RestController
 @RequestMapping("/topsecret")
-public class TopSecretRest {
+class TopSecretRest {
 
     @Autowired
-    private IPosicionBoundary posicionBoundary;
+    private IPosicionCountrol posicionBoundary;
     @Autowired
-    private IMensajeBoundary mensajeBoundary;
+    private IMensajeControl mensajeBoundary;
 
     @PostMapping("/")
-    public ResponseEntity defigrarPosicionNave(@RequestBody RequestInfoTopSecret info) {
+    public ResponseEntity<?> defigrarPosicionNave(@RequestBody RequestInfoTopSecretDto info) {
         List<DistanciaSateliteDto> distanciaSateliteDtos = convertirInfoADistanciasSatelites(info);
         StringBuilder mensaje = new StringBuilder();
         try {
@@ -43,24 +43,21 @@ public class TopSecretRest {
                     .position(posicionNave)
                     .message(mensaje.toString())
                     .build();
-            return new ResponseEntity(response, HttpStatus.OK);
-        } catch (PosicionException e) {
-            log.error(e);
-            mensaje.append(e.getType().getMessage());
-        } catch (MensajeException e) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        } catch (PosicionException | MensajeException e) {
             log.error(e);
             mensaje.append(e.getType().getMessage());
         }
         return new ResponseEntity<>(mensaje.toString(), HttpStatus.NOT_FOUND);
     }
 
-    private String[][] getTodosLosMensajes(RequestInfoTopSecret info) {
+    private String[][] getTodosLosMensajes(RequestInfoTopSecretDto info) {
         return Arrays.stream(info.getSatellites())
                 .map(InfoSenalSateliteDto::getMessage)
                 .toArray(String[][]::new);
     }
 
-    private List<DistanciaSateliteDto> convertirInfoADistanciasSatelites(RequestInfoTopSecret info) {
+    private List<DistanciaSateliteDto> convertirInfoADistanciasSatelites(RequestInfoTopSecretDto info) {
         return Arrays.stream(info.getSatellites())
                 .map(i -> DistanciaSateliteDto.builder()
                         .nombre(i.getName().toUpperCase())

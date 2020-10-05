@@ -1,10 +1,11 @@
-package edu.iasp.mercadolibre.challenge.operacionfuegoquasar.boundary;
+package edu.iasp.mercadolibre.challenge.operacionfuegoquasar.control;
 
-import edu.iasp.mercadolibre.challenge.operacionfuegoquasar.control.SateliteMemoControl;
-import edu.iasp.mercadolibre.challenge.operacionfuegoquasar.utils.Coordenada;
-import edu.iasp.mercadolibre.challenge.operacionfuegoquasar.dto.DistanciaSateliteDto;
+import edu.iasp.mercadolibre.challenge.operacionfuegoquasar.control.dto.DistanciaSateliteDto;
+import edu.iasp.mercadolibre.challenge.operacionfuegoquasar.control.posicion.PosicionCountrol;
+import edu.iasp.mercadolibre.challenge.operacionfuegoquasar.control.posicion.SateliteMemoControl;
 import edu.iasp.mercadolibre.challenge.operacionfuegoquasar.exception.PosicionException;
 import edu.iasp.mercadolibre.challenge.operacionfuegoquasar.exception.PosicionExceptionType;
+import edu.iasp.mercadolibre.challenge.operacionfuegoquasar.utils.Coordenada;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -20,18 +21,18 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static edu.iasp.mercadolibre.challenge.operacionfuegoquasar.mother.DistanciaSateliteMother.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Log4j2
 @ExtendWith(MockitoExtension.class)
-class PosicionBoundaryTest {
+class PosicionControlTest {
 
     @Spy
     private static SateliteMemoControl sateliteControl;
     @InjectMocks
-    private static PosicionBoundary posicionBoundary;
+    private static PosicionCountrol posicionBoundary;
 
     private List<DistanciaSateliteDto> distanciasSatelites;
     private Coordenada posicion;

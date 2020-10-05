@@ -3,7 +3,7 @@ package edu.iasp.mercadolibre.challenge.operacionfuegoquasar.exception;
 import lombok.Getter;
 
 @Getter
-public class PosicionException extends Exception {
+public class PosicionException extends Exception implements IException{
 
     private final PosicionExceptionType type;
 

@@ -1,4 +1,4 @@
-package edu.iasp.mercadolibre.challenge.operacionfuegoquasar.boundary;
+package edu.iasp.mercadolibre.challenge.operacionfuegoquasar.control.mensaje;
 
 import edu.iasp.mercadolibre.challenge.operacionfuegoquasar.exception.DesfaseException;
 import edu.iasp.mercadolibre.challenge.operacionfuegoquasar.exception.MensajeException;
@@ -11,13 +11,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class MensajeBoundary implements IMensajeBoundary {
+public class MensajeControl implements IMensajeControl {
     
     @Value("${operacionfuegoquasar.mensaje.palabra.vacia}")
     private String palabraVacia;
 
     @Autowired
-    private IDesfaseBoundary desfaseBoundary;
+    private IDesfaseControl desfaseBoundary;
 
     @Override
     public String desifrar(String[]... mensajes) throws MensajeException {

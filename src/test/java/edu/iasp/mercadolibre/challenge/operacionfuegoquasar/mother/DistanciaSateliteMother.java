@@ -1,6 +1,6 @@
 package edu.iasp.mercadolibre.challenge.operacionfuegoquasar.mother;
 
-import edu.iasp.mercadolibre.challenge.operacionfuegoquasar.dto.DistanciaSateliteDto;
+import edu.iasp.mercadolibre.challenge.operacionfuegoquasar.control.dto.DistanciaSateliteDto;
 
 import java.util.List;
 import java.util.Objects;

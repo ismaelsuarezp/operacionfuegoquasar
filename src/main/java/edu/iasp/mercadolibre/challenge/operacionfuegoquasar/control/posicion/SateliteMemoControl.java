@@ -1,7 +1,7 @@
-package edu.iasp.mercadolibre.challenge.operacionfuegoquasar.control;
+package edu.iasp.mercadolibre.challenge.operacionfuegoquasar.control.posicion;
 
+import edu.iasp.mercadolibre.challenge.operacionfuegoquasar.control.dto.SateliteDto;
 import edu.iasp.mercadolibre.challenge.operacionfuegoquasar.utils.Coordenada;
-import edu.iasp.mercadolibre.challenge.operacionfuegoquasar.dto.SateliteDto;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

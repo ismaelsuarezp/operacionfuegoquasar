@@ -5,4 +5,6 @@ operacionfuegoquasar:
   posicion:
       distancias:
         cantidadMinimaParaCalcular: 3
-
+spring:
+  application:
+    name: operacion-fuego-quasar

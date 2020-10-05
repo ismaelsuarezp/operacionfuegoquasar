@@ -1,4 +1,4 @@
-package edu.iasp.mercadolibre.challenge.operacionfuegoquasar.control;
+package edu.iasp.mercadolibre.challenge.operacionfuegoquasar.control.posicion;
 
 import edu.iasp.mercadolibre.challenge.operacionfuegoquasar.utils.Coordenada;
 

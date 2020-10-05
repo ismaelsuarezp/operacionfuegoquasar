@@ -1,6 +1,5 @@
 package edu.iasp.mercadolibre.challenge.operacionfuegoquasar.utils;
 
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

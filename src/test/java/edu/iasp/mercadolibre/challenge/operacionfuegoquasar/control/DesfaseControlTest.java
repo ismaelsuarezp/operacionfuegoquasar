@@ -1,5 +1,7 @@
-package edu.iasp.mercadolibre.challenge.operacionfuegoquasar.boundary;
+package edu.iasp.mercadolibre.challenge.operacionfuegoquasar.control;
 
+import edu.iasp.mercadolibre.challenge.operacionfuegoquasar.control.mensaje.DesfaseControl;
+import edu.iasp.mercadolibre.challenge.operacionfuegoquasar.control.mensaje.IDesfaseControl;
 import edu.iasp.mercadolibre.challenge.operacionfuegoquasar.exception.DesfaseException;
 import edu.iasp.mercadolibre.challenge.operacionfuegoquasar.exception.DesfaseExceptionType;
 import org.junit.jupiter.api.BeforeAll;
@@ -15,9 +17,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 @SpringBootTest
-class DesfaseBoundaryTest {
+class DesfaseControlTest {
 
-    private static IDesfaseBoundary desfaseBoundary;
+    private static IDesfaseControl desfaseBoundary;
 
     private String[][] mensajes;
     private List<String[]> mensajesResultantes;
@@ -25,7 +27,7 @@ class DesfaseBoundaryTest {
 
     @BeforeAll
     public static void init(){
-        desfaseBoundary  = new DesfaseBoundary();;
+        desfaseBoundary  = new DesfaseControl();
     }
 
     @BeforeEach

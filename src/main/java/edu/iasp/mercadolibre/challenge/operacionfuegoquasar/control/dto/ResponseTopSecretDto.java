@@ -1,4 +1,4 @@
-package edu.iasp.mercadolibre.challenge.operacionfuegoquasar.dto;
+package edu.iasp.mercadolibre.challenge.operacionfuegoquasar.control.dto;
 
 import edu.iasp.mercadolibre.challenge.operacionfuegoquasar.utils.Coordenada;
 import lombok.Getter;

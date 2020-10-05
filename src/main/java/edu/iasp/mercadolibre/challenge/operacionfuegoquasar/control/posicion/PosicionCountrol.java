@@ -1,13 +1,11 @@
-package edu.iasp.mercadolibre.challenge.operacionfuegoquasar.boundary;
+package edu.iasp.mercadolibre.challenge.operacionfuegoquasar.control.posicion;
 
-import edu.iasp.mercadolibre.challenge.operacionfuegoquasar.control.ISateliteControl;
+import edu.iasp.mercadolibre.challenge.operacionfuegoquasar.control.dto.DistanciaSateliteDto;
+import edu.iasp.mercadolibre.challenge.operacionfuegoquasar.exception.PosicionException;
+import edu.iasp.mercadolibre.challenge.operacionfuegoquasar.exception.PosicionExceptionType;
 import edu.iasp.mercadolibre.challenge.operacionfuegoquasar.utils.Circunferencia;
 import edu.iasp.mercadolibre.challenge.operacionfuegoquasar.utils.CircunferenciaUtils;
 import edu.iasp.mercadolibre.challenge.operacionfuegoquasar.utils.Coordenada;
-import edu.iasp.mercadolibre.challenge.operacionfuegoquasar.dto.DistanciaSateliteDto;
-import edu.iasp.mercadolibre.challenge.operacionfuegoquasar.dto.SateliteDto;
-import edu.iasp.mercadolibre.challenge.operacionfuegoquasar.exception.PosicionException;
-import edu.iasp.mercadolibre.challenge.operacionfuegoquasar.exception.PosicionExceptionType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -17,10 +15,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @Service
-public class PosicionBoundary implements IPosicionBoundary {
+public class PosicionCountrol implements IPosicionCountrol {
 
     @Value("${operacionfuegoquasar.posicion.distancias.cantidadMinimaParaCalcular}")
     private int cantidadDistanciasMinimasParaCalcular;

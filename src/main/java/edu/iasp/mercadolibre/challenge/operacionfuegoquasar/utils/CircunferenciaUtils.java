@@ -1,13 +1,12 @@
 package edu.iasp.mercadolibre.challenge.operacionfuegoquasar.utils;
 
-import com.sun.istack.NotNull;
-
 import java.util.ArrayList;
 import java.util.List;
 
-import static edu.iasp.mercadolibre.challenge.operacionfuegoquasar.utils.TrianguloRectanguloUtils.*;
+import static edu.iasp.mercadolibre.challenge.operacionfuegoquasar.utils.TrianguloRectanguloUtils.calcularCateto;
+import static edu.iasp.mercadolibre.challenge.operacionfuegoquasar.utils.TrianguloRectanguloUtils.calcularHipotenusa;
 
-public class CircunferenciaUtils {//265,24382---241,46295   20011,7662227025    585598,1040481924   778,209400014478687
+public class CircunferenciaUtils {
 
     private static final double DESVIACION_ACEPTABLE = 0.0001;
 
@@ -15,7 +14,7 @@ public class CircunferenciaUtils {//265,24382---241,46295   20011,7662227025    
 
     }
 
-    public static List<Coordenada> calcularPuntosIntercepcion(@NotNull Circunferencia c1, @NotNull Circunferencia c2) {
+    public static List<Coordenada> calcularPuntosIntercepcion(Circunferencia c1, Circunferencia c2) {
         List<Coordenada> puntosInterseccion = new ArrayList<>();
         double distancia = distanciaEntrePuntos(c1.getCentro(), c2.getCentro());
         if (tienenPuntosDeInterseccion(c1.getRadio(), c2.getRadio(), distancia)) {
@@ -81,7 +80,7 @@ public class CircunferenciaUtils {//265,24382---241,46295   20011,7662227025    
     }
 
 
-    public static boolean puntoEnCircunferencia(@NotNull Coordenada p, @NotNull Circunferencia c) {
+    public static boolean puntoEnCircunferencia(Coordenada p, Circunferencia c) {
         double distancia = distanciaEntrePuntos(p,c.getCentro());
         return Math.abs(distancia - c.getRadio()) < DESVIACION_ACEPTABLE;
     }

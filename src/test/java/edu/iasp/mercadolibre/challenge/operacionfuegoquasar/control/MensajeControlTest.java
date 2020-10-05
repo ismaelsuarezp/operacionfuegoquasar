@@ -1,5 +1,7 @@
-package edu.iasp.mercadolibre.challenge.operacionfuegoquasar.boundary;
+package edu.iasp.mercadolibre.challenge.operacionfuegoquasar.control;
 
+import edu.iasp.mercadolibre.challenge.operacionfuegoquasar.control.mensaje.DesfaseControl;
+import edu.iasp.mercadolibre.challenge.operacionfuegoquasar.control.mensaje.MensajeControl;
 import edu.iasp.mercadolibre.challenge.operacionfuegoquasar.exception.DesfaseException;
 import edu.iasp.mercadolibre.challenge.operacionfuegoquasar.exception.MensajeException;
 import edu.iasp.mercadolibre.challenge.operacionfuegoquasar.exception.MensajeExceptionType;
@@ -25,12 +27,12 @@ import static org.mockito.Mockito.when;
 @SpringBootTest
 @Log4j2
 @ExtendWith(MockitoExtension.class)
-class MensajeBoundaryTest {
+class MensajeControlTest {
 
     @Mock
-    private static DesfaseBoundary desfaseBoundary;
+    private static DesfaseControl desfaseControl;
     @InjectMocks
-    private static MensajeBoundary mensajeBoundary;
+    private static MensajeControl mensajeBoundary;
 
     private String[][] mensajes;
     private String mensajeDesifrado;
@@ -61,7 +63,7 @@ class MensajeBoundaryTest {
                 MSJ_SATELITE_1_NO_LEGIBLE,
                 MSJ_SATELITE_2_SIN_DESFASE,
                 MSJ_SATELITE_3};
-        when(desfaseBoundary.quitarDesfase(any())).thenThrow(DesfaseException.class);
+        when(desfaseControl.quitarDesfase(any())).thenThrow(DesfaseException.class);
     }
 
     private void entoncesMensajeExceptionDatosInconsistentes() {
@@ -83,7 +85,7 @@ class MensajeBoundaryTest {
     private void dadoMensajesConAlgunDesfase() throws DesfaseException {
         mensajes = new String[][]{MSJ_SATELITE_1,MSJ_SATELITE_2_SIN_DESFASE,MSJ_SATELITE_3};
         List<String[]> mensajesResultMock = Arrays.asList(MSJ_SATELITE_1,MSJ_SATELITE_2,MSJ_SATELITE_3);
-        when(desfaseBoundary.quitarDesfase(mensajes)).thenReturn(mensajesResultMock);
+        when(desfaseControl.quitarDesfase(mensajes)).thenReturn(mensajesResultMock);
     }
     //</editor-fold>
 
@@ -98,7 +100,7 @@ class MensajeBoundaryTest {
     private void dadoMensajesSinDesfase() throws DesfaseException {
         mensajes = new String[][]{MSJ_SATELITE_1_SIN_DESFASE,MSJ_SATELITE_2_SIN_DESFASE,MSJ_SATELITE_3_SIN_DESFASE};
         List<String[]> mensajesResultMock = Arrays.asList(MSJ_SATELITE_1_SIN_DESFASE,MSJ_SATELITE_2_SIN_DESFASE,MSJ_SATELITE_3_SIN_DESFASE);
-        when(desfaseBoundary.quitarDesfase(mensajes)).thenReturn(mensajesResultMock);
+        when(desfaseControl.quitarDesfase(mensajes)).thenReturn(mensajesResultMock);
     }
     //</editor-fold>
 
@@ -113,7 +115,7 @@ class MensajeBoundaryTest {
     private void dadoMensajesNoDesifrables() throws DesfaseException {
         mensajes = new String[][]{MSJ_SATELITE_1_NO_LEGIBLE, MSJ_SATELITE_2_SIN_DESFASE, MSJ_SATELITE_3_SIN_DESFASE};
         List<String[]> mensajesMock = Arrays.asList(MSJ_SATELITE_1_NO_LEGIBLE, MSJ_SATELITE_2_SIN_DESFASE, MSJ_SATELITE_3_SIN_DESFASE);
-        when(desfaseBoundary.quitarDesfase(mensajes)).thenReturn(mensajesMock);
+        when(desfaseControl.quitarDesfase(mensajes)).thenReturn(mensajesMock);
     }
 
     private void entoncesMensajeExceptionPalabraNoCoincide() {
@@ -134,7 +136,7 @@ class MensajeBoundaryTest {
     private void dadoMensajesNoDesifrablesPalabrasVacias() throws DesfaseException {
         mensajes = new String[][]{MSJ_SATELITE_1_PALABRA_VACIA, MSJ_SATELITE_2_PALABRA_VACIA, MSJ_SATELITE_3_PALABRA_VACIA};
         List<String[]> mensajesMock = Arrays.asList(MSJ_SATELITE_1_PALABRA_VACIA, MSJ_SATELITE_2_PALABRA_VACIA, MSJ_SATELITE_3_PALABRA_VACIA);
-        when(desfaseBoundary.quitarDesfase(mensajes)).thenReturn(mensajesMock);
+        when(desfaseControl.quitarDesfase(mensajes)).thenReturn(mensajesMock);
     }
 
     private void entoncesMensajeExceptionTodasLasPalabrasVacias() {

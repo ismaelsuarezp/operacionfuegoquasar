@@ -1,4 +1,4 @@
-package edu.iasp.mercadolibre.challenge.operacionfuegoquasar.boundary;
+package edu.iasp.mercadolibre.challenge.operacionfuegoquasar.control.mensaje;
 
 
 import edu.iasp.mercadolibre.challenge.operacionfuegoquasar.exception.DesfaseException;
@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Service
-public class DesfaseBoundary implements IDesfaseBoundary {
+public class DesfaseControl implements IDesfaseControl {
 
     public List<String[]> quitarDesfase(String[]... mensajes) throws DesfaseException {
         validaMensajes(mensajes);
