@@ -1,5 +1,6 @@
 # OperacionFuegoQuasar
 OperacionFuegoQuasar app esta desarrollada con Spring y PostgreSQL, la cual está alojada en AWS.
+
 ## Install
 Se debe contar con una base de datos postgresql en local y luego ejecutar el main se la aplicacion de Spring pasando como argumentos el usuario y la clave de conexión, se requiere java 11 y maven
 ## Usage
